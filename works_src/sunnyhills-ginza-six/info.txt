@@ -1,0 +1,10 @@
+title: SunnyHills GINZA SIX 店舗什器
+year: 2021
+category: 店舗什器
+design: SAND
+sample / manufacture: KOKKOK
+construction: MCクラフト
+photo: MCクラフト
+order: 1
+---
+GINZA SIX内の店舗什器を製作。

@@ -1,0 +1,9 @@
+title: ohagi3 ランプシェード
+year: 2022
+category: 照明・什器
+design: カミヤアーキテクツ
+sample / manufacture: KOKKOK
+photo: 黒岩 翼
+order: 2
+---
+試作から本製作まで一貫して担当したランプシェード。

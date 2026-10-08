@@ -1,0 +1,9 @@
+title: 月と海 家具
+year: 2020
+category: 家具
+design: オンデザインパートナーズ
+furniture design / manufacture: KOKKOK
+textiles: 庄司はるか
+photo: 高野ユリカ
+order: 4
+---

@@ -1,0 +1,8 @@
+title: YUGEN
+year: 2021
+category: 家具
+architecture: 菅野 正太郎
+furniture: KOKKOK
+photo: 楠瀬 友将
+order: 6
+---

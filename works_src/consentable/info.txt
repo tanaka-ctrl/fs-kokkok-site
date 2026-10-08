@@ -1,0 +1,9 @@
+title: CONSENTABLE /mok
+year: 2018
+category: プロダクト開発
+design: 梶谷拓生
+manufacture: KOKKOK
+collaborator: モクタンカン
+order: 8
+---
+生木の丸太を乾燥・製材せずにそのまま加工して製作。伐採後、市場で売値のつかない木材を活用するプロダクトです。

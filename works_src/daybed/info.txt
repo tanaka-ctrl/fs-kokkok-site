@@ -1,0 +1,8 @@
+title: デイベッド製作
+year: 2022
+category: 家具
+design: PERSIMMON HILLS architects
+sample / manufacture: KOKKOK
+photo: 千葉正人
+order: 3
+---

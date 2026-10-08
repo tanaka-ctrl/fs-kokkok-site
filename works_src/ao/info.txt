@@ -1,0 +1,10 @@
+title: Ao.
+year: 2019
+category: ブランド家具
+design: KOKKOK
+manufacture: KOKKOK
+collaborator: anova design
+photo: NOJYO
+order: 9
+---
+Ao.は、anova design, inc と KOKKOK の共同プロジェクトとして2018年に始動。世界最古の染料といわれる藍で染色した無垢材に創造的な意匠を施し、独自のコンテンポラリーなデザイン家具をつくります。

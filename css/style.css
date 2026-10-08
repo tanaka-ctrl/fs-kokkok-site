@@ -60,7 +60,20 @@ p{margin:0 0 1em}
 .services p{font-size:14px;color:var(--muted);margin:0;line-height:1.8}
 .note a{text-decoration:underline;text-underline-offset:4px}
 
-/* トップ：事例写真 */
+/* トップ：事例の横スライド */
+.carousel{position:relative;max-width:var(--max);margin:0 auto;padding:0 24px}
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 calc((100% - 32px) / 3);scroll-snap-align:start;position:relative;display:block;background:#f2f2f2;overflow:hidden}
+.slide img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .4s}
+.slide:hover img{transform:scale(1.03)}
+.slide-title{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.55));opacity:0;transition:opacity .25s}
+.slide:hover .slide-title{opacity:1}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.92);color:var(--text);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 3px}
+.carousel-btn.prev{left:4px}.carousel-btn.next{right:4px}
+.carousel-btn:hover{background:#fff;border-color:var(--text)}
+
+/* トップ：事例写真（旧・3枚固定グリッド） */
 .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .work figure{margin:0}
 .work img{width:100%;aspect-ratio:3/2;object-fit:cover;background:#f2f2f2}
@@ -109,6 +122,11 @@ p{margin:0 0 1em}
   h1,.hero h1{font-size:22px}
   .hero{padding:24px 0 40px}
   .works-grid{grid-template-columns:1fr;gap:28px}
+  .carousel{padding:0 0 0 20px}
+  .track{gap:10px;padding-right:20px}
+  .slide{flex-basis:78%}
+  .slide-title{display:none}
+  .carousel-btn{display:none}
   .services{grid-template-columns:1fr;gap:24px}
   .company div{grid-template-columns:1fr;gap:4px;padding:14px 0}
   .btn{display:block;text-align:center}

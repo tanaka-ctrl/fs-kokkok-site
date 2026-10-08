@@ -146,6 +146,24 @@ main=f'''  <section class="section">
 os.makedirs(f'{OUT}/works',exist_ok=True)
 open(f'{OUT}/works/index.html','w',encoding='utf-8').write(page('事例｜株式会社KOKKOK','株式会社KOKKOKの製作事例。店舗什器、オーダー家具、試作開発。','../','works',main))
 
+# ---------- 4b. トップページの横スライド ----------
+slides=''.join(f'''      <a class="slide" href="works/{w['slug']}/">
+        <img src="images/works/{w['slug']}/cover.jpg" alt="{esc(w['title'])}" loading="lazy">
+        <span class="slide-title">{esc(w['title'])}</span>
+      </a>
+''' for w in works)
+carousel=f'''    <div class="carousel" id="carousel">
+      <button class="carousel-btn prev" type="button" aria-label="前へ">‹</button>
+      <div class="track" id="track">
+{slides}      </div>
+      <button class="carousel-btn next" type="button" aria-label="次へ">›</button>
+    </div>
+    <script src="js/carousel.js"></script>
+'''
+idx=open(f'{OUT}/index.html',encoding='utf-8').read()
+idx=re.sub(r'(<!-- WORKS_CAROUSEL_START[^>]*-->\n).*?(    <!-- WORKS_CAROUSEL_END -->)',lambda m:m.group(1)+carousel+m.group(2),idx,flags=re.S)
+open(f'{OUT}/index.html','w',encoding='utf-8').write(idx)
+
 # ---------- 5. 詳細ページ（グリッド＋クリック拡大） ----------
 LIGHTBOX='''<div class="lb" id="lb" hidden>
   <button class="lb-close" id="lbClose" aria-label="閉じる">×</button>

@@ -196,3 +196,6 @@ p{margin:0 0 1em}
 .extra legend{font-size:13px;padding:0 6px;color:var(--text);letter-spacing:.06em}
 #formMsg{color:#8a2d2d}
 @media (max-width:760px){ .grid2{grid-template-columns:1fr} }
+.notice{background:#f7f7f7;border:1px solid var(--line);border-radius:4px;padding:20px 22px;margin:0 0 22px}
+.notice p{margin:0 0 12px}.notice p:last-child{margin:0}
+#commonFields[hidden],#restFields[hidden]{display:none}

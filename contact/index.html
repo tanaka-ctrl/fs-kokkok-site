@@ -32,15 +32,17 @@
           <label for="f-type">ご相談内容 <span class="req">必須</span></label>
           <select id="f-type" name="type" required>
             <option value="">選択してください</option>
-            <option value="新規出店">新規出店（店舗・オフィスの什器一式）</option>
-            <option value="改装">改装・リニューアル</option>
-            <option value="家具単品">家具単品（テーブル・収納など）</option>
+            <option value="オーダー家具・什器">オーダー家具・什器（店舗・オフィス・住宅）</option>
             <option value="試作・開発">試作・開発</option>
-            <option value="OEM・量産">OEM・小ロット生産</option>
+            <option value="OEM・小ロット生産">OEM・小ロット生産</option>
+            <option value="家具のリペア・張り替え">家具のリペア・張り替え</option>
+            <option value="デザイン相談">デザイン相談</option>
+            <option value="CNC加工">CNC加工のみ（FABNODEへ）</option>
             <option value="その他">その他</option>
           </select>
         </div>
 
+        <div id="commonFields">
         <div class="grid2">
           <div class="field"><label for="f-company">会社名</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
           <div class="field"><label for="f-name">お名前 <span class="req">必須</span></label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
@@ -54,31 +56,21 @@
           <input id="f-ship" name="ship" type="text">
           <label class="check"><input id="f-sameaddr" type="checkbox"> 現場住所と同じ</label>
         </div>
+        </div>
 
         <!-- 相談内容ごとに出る追加の質問 -->
-        <fieldset class="extra" data-for="新規出店 改装">
-          <legend>店舗・オフィスについて</legend>
+        <fieldset class="extra" data-for="オーダー家具・什器">
+          <legend>家具・什器について</legend>
           <div class="grid2">
-            <div class="field"><label for="f-kind">物件の種類</label><input id="f-kind" name="kind" type="text" placeholder="例：カフェ／物販／オフィス"></div>
-            <div class="field"><label for="f-open">オープン・引渡し予定日</label><input id="f-open" name="open" type="text" placeholder="例：2026年12月上旬"></div>
+            <div class="field"><label for="f-use">使う場所</label><select id="f-use" name="use"><option value="">選択</option><option>店舗</option><option>オフィス</option><option>住宅</option><option>その他</option></select></div>
+            <div class="field"><label for="f-open">納品・オープン予定日</label><input id="f-open" name="open" type="text" placeholder="例：2026年12月上旬"></div>
             <div class="field"><label for="f-designer">設計者・施工会社</label><input id="f-designer" name="designer" type="text" placeholder="決まっていれば（未定でも可）"></div>
-            <div class="field"><label for="f-drawing">図面の有無</label><select id="f-drawing" name="drawing"><option value="">選択</option><option>あり（添付します）</option><option>作成中</option><option>なし（相談したい）</option></select></div>
+            <div class="field"><label for="f-drawing">図面・参考画像</label><select id="f-drawing" name="drawing"><option value="">選択</option><option>図面あり（メールに添付します）</option><option>参考画像あり（メールに添付します）</option><option>作成中</option><option>なし（相談したい）</option></select></div>
           </div>
-          <div class="field"><label for="f-items">製作したい什器</label><textarea id="f-items" name="items" rows="3" placeholder="例：レジカウンター、商品棚×4、ベンチ"></textarea></div>
+          <div class="field"><label for="f-items">製作したいもの（品目・数量・サイズ）</label><textarea id="f-items" name="items" rows="3" placeholder="例：レジカウンター W2400×D600×H950 ×1台、商品棚 ×4台"></textarea></div>
         </fieldset>
 
-        <fieldset class="extra" data-for="家具単品">
-          <legend>家具について</legend>
-          <div class="grid2">
-            <div class="field"><label for="f-item">品目</label><input id="f-item" name="item" type="text" placeholder="例：ダイニングテーブル"></div>
-            <div class="field"><label for="f-size">サイズ（おおよそ）</label><input id="f-size" name="size" type="text" placeholder="例：W1800×D850×H720"></div>
-            <div class="field"><label for="f-qty">数量</label><input id="f-qty" name="qty" type="text" placeholder="例：1台"></div>
-            <div class="field"><label for="f-use">使う場所</label><select id="f-use" name="use"><option value="">選択</option><option>店舗・オフィス</option><option>住宅</option><option>その他</option></select></div>
-          </div>
-          <div class="field"><label for="f-ref">参考にしたいもの</label><textarea id="f-ref" name="ref" rows="2" placeholder="樹種・色・参考画像のURLなど"></textarea></div>
-        </fieldset>
-
-        <fieldset class="extra" data-for="試作・開発 OEM・量産">
+        <fieldset class="extra" data-for="試作・開発 OEM・小ロット生産">
           <legend>製品について</legend>
           <div class="field"><label for="f-product">製品の概要</label><textarea id="f-product" name="product" rows="3" placeholder="どんな製品か、用途、素材の希望など"></textarea></div>
           <div class="grid2">
@@ -88,6 +80,31 @@
           </div>
         </fieldset>
 
+        <fieldset class="extra" data-for="家具のリペア・張り替え">
+          <legend>リペア・張り替えについて</legend>
+          <div class="grid2">
+            <div class="field"><label for="f-ritem">品目</label><input id="f-ritem" name="ritem" type="text" placeholder="例：ダイニングチェア 4脚"></div>
+            <div class="field"><label for="f-rmaker">メーカー・購入時期（分かれば）</label><input id="f-rmaker" name="rmaker" type="text"></div>
+          </div>
+          <div class="field"><label for="f-rstate">状態・困っていること</label><textarea id="f-rstate" name="rstate" rows="3" placeholder="例：座面の張地が破れた、脚がぐらつく、天板の塗装が剥がれた"></textarea></div>
+          <p class="note">現状の写真をメールに添付していただけると、お見積りが早くなります。</p>
+        </fieldset>
+
+        <fieldset class="extra" data-for="デザイン相談">
+          <legend>ご相談について</legend>
+          <div class="field"><label for="f-dtheme">相談したいこと</label><textarea id="f-dtheme" name="dtheme" rows="3" placeholder="例：店舗の什器計画を一緒に考えてほしい、素材や仕上げの選び方を相談したい"></textarea></div>
+          <div class="grid2">
+            <div class="field"><label for="f-dstage">現在の段階</label><select id="f-dstage" name="dstage"><option value="">選択</option><option>構想段階</option><option>設計中（図面あり）</option><option>見積り比較中</option></select></div>
+            <div class="field"><label for="f-dwhen">希望時期</label><input id="f-dwhen" name="dwhen" type="text" placeholder="例：来月中に打合せ希望"></div>
+          </div>
+        </fieldset>
+
+        <div class="extra notice" data-for="CNC加工">
+          <p><strong>CNC加工のみのご依頼は、CNC加工受託サービス「FABNODE」で承っています。</strong><br>材料手配・データ作成からまとめてご相談いただけます。</p>
+          <p><a class="btn btn-primary" href="https://fabnode.jp" target="_blank" rel="noopener">FABNODEのサイトへ</a></p>
+        </div>
+
+        <div id="restFields">
         <div class="grid2">
           <div class="field"><label for="f-budget">ご予算</label><input id="f-budget" name="budget" type="text" placeholder="例：100万円前後／未定"></div>
           <div class="field"><label for="f-due">ご希望納期</label><input id="f-due" name="due" type="text" placeholder="例：2026年12月末まで"></div>
@@ -101,6 +118,7 @@
           <button class="btn btn-ghost" id="copyBtn" type="button">内容をコピー</button>
         </div>
         <p class="note">メールソフトが開かない場合は「内容をコピー」を押し、<a href="mailto:info@fs-kokkok.com">info@fs-kokkok.com</a> 宛に貼り付けて送ってください。</p>
+        </div>
       </form>
     </div>
   </section>

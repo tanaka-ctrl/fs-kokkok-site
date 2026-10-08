@@ -6,11 +6,14 @@
   var extras = Array.prototype.slice.call(document.querySelectorAll('.extra'));
   var msg = document.getElementById('formMsg');
 
+  var common = document.getElementById('commonFields'), rest = document.getElementById('restFields');
   function updateExtras() {
     extras.forEach(function (fs) {
       var on = fs.getAttribute('data-for').split(' ').indexOf(type.value) !== -1;
       fs.hidden = !on;
     });
+    var cnc = type.value === 'CNC加工';
+    common.hidden = cnc; rest.hidden = cnc;
   }
   type.addEventListener('change', updateExtras); updateExtras();
 
@@ -35,12 +38,14 @@
     var L = ['【ご相談内容】' + t, '',
       line('会社名', 'f-company'), line('お名前', 'f-name'), line('電話番号', 'f-tel'), line('メール', 'f-mail'), '',
       line('現場住所', 'f-site'), line('送付先住所', 'f-ship') + (same.checked ? '（現場と同じ）' : ''), ''];
-    if (t === '新規出店' || t === '改装') {
-      L.push('【店舗・オフィスについて】', line('物件の種類', 'f-kind'), line('オープン・引渡し予定', 'f-open'), line('設計者・施工会社', 'f-designer'), line('図面', 'f-drawing'), line('製作したい什器', 'f-items'), '');
-    } else if (t === '家具単品') {
-      L.push('【家具について】', line('品目', 'f-item'), line('サイズ', 'f-size'), line('数量', 'f-qty'), line('使う場所', 'f-use'), line('参考', 'f-ref'), '');
-    } else if (t === '試作・開発' || t === 'OEM・量産') {
+    if (t === 'オーダー家具・什器') {
+      L.push('【家具・什器について】', line('使う場所', 'f-use'), line('納品・オープン予定', 'f-open'), line('設計者・施工会社', 'f-designer'), line('図面・参考画像', 'f-drawing'), line('製作したいもの', 'f-items'), '');
+    } else if (t === '試作・開発' || t === 'OEM・小ロット生産') {
       L.push('【製品について】', line('概要', 'f-product'), line('数量', 'f-lot'), line('データ', 'f-data'), line('量産の予定', 'f-massprod'), '');
+    } else if (t === '家具のリペア・張り替え') {
+      L.push('【リペア・張り替えについて】', line('品目', 'f-ritem'), line('メーカー・購入時期', 'f-rmaker'), line('状態・困っていること', 'f-rstate'), '');
+    } else if (t === 'デザイン相談') {
+      L.push('【ご相談について】', line('相談したいこと', 'f-dtheme'), line('現在の段階', 'f-dstage'), line('希望時期', 'f-dwhen'), '');
     }
     L.push(line('ご予算', 'f-budget'), line('ご希望納期', 'f-due'), '', '【詳細・ご質問】', val('f-detail'));
     return L.join('\n');

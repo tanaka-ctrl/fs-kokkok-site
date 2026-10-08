@@ -41,7 +41,7 @@
     if (t === 'オーダー家具・什器') {
       L.push('【家具・什器について】', line('使う場所', 'f-use'), line('納品・オープン予定', 'f-open'), line('設計者・施工会社', 'f-designer'), line('図面・参考画像', 'f-drawing'), line('製作したいもの', 'f-items'), '');
     } else if (t === '試作・開発' || t === 'OEM・小ロット生産') {
-      L.push('【製品について】', line('概要', 'f-product'), line('数量', 'f-lot'), line('データ', 'f-data'), line('量産の予定', 'f-massprod'), '');
+      L.push('【製品について】', line('概要', 'f-product'), line('数量', 'f-lot'), line('データ', 'f-data'), line('量産の予定', 'f-massprod'), line('開発完了の目安', 'f-devdue'), '');
     } else if (t === '家具のリペア・張り替え') {
       L.push('【リペア・張り替えについて】', line('品目', 'f-ritem'), line('メーカー・購入時期', 'f-rmaker'), line('状態・困っていること', 'f-rstate'), '');
     } else if (t === 'デザイン相談') {

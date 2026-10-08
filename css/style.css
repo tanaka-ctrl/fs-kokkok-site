@@ -59,6 +59,7 @@ p{margin:0 0 1em}
 .services h3{font-size:15px;font-weight:600;margin:0 0 8px;letter-spacing:.06em}
 .services p{font-size:14px;color:var(--muted);margin:0;line-height:1.8}
 .note a{text-decoration:underline;text-underline-offset:4px}
+.services-note{margin:36px 0 0;padding-top:20px;border-top:1px solid var(--line)}
 
 /* トップ：事例の横スライド */
 .carousel{position:relative;max-width:var(--max);margin:0 auto;padding:0 24px}

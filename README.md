@@ -21,13 +21,13 @@ GitHub Pages で公開する静的サイト。`main` に push すると GitHub A
 
 `works_src/README.txt` を参照。フォルダを1つ追加して push（または github.com でアップロード）するだけ。
 
-## 検索エンジン対策（現在）
+## 検索エンジン
 
-全ページに `<meta name="robots" content="noindex, nofollow">` が入っており検索結果に載らない。公開OKになったら `index.html` / `about` / `contact` の各HTMLと `_tools/build_site.py` の `NOINDEX` から外す。
+2026-10-08 から全ページ検索可（robots.txt で許可、sitemap.xml を自動生成）。検索に載せたくなくなったら `_tools/build_site.py` の `NOINDEX` に noindex タグを入れ、`index.html` / `about` / `contact` にも同じタグを足す。
 
 ## 独自ドメイン
 
-www.fs-kokkok.com を使うときはリポジトリ直下に `CNAME` ファイル（中身は `www.fs-kokkok.com` の1行）を置く。生成スクリプトが `_site/` にコピーする。
+`CNAME` ファイル（www.fs-kokkok.com）を置いてあり、GitHub Pages の設定（Custom domain）にも同じ値を登録済み。
 
 ## ローカルで確認する
 

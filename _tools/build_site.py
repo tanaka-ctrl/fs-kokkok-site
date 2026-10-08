@@ -47,7 +47,7 @@ def esc(s): return html.escape(s,quote=True)
 def nl2br(s): return '<br>'.join(esc(l) for l in s.split('\n'))
 
 # ---------- 共通テンプレート ----------
-NOINDEX='<meta name="robots" content="noindex, nofollow">'
+NOINDEX=''  # 検索に載せたくない時は '<meta name="robots" content="noindex, nofollow">' にする
 def header(rel,current):
     def a(href,label,key):
         return f'<a href="{href}"{" aria-current=\"page\"" if key==current else ""}>{label}</a>'
@@ -72,8 +72,7 @@ def page(title,desc,rel,current,main,extra_head='',extra_body=''):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{NOINDEX}
-<title>{esc(title)}</title>
+{NOINDEX}<title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="stylesheet" href="{rel}css/style.css">
 {extra_head}</head>
@@ -203,5 +202,10 @@ for i,w in enumerate(works):
     os.makedirs(f'{OUT}/works/{w["slug"]}',exist_ok=True)
     open(f'{OUT}/works/{w["slug"]}/index.html','w',encoding='utf-8').write(
         page(f"{w['title']}｜事例｜株式会社KOKKOK",f"{w['title']}（{w['year']}）の製作事例。",'../../','works',main,extra_body=LIGHTBOX))
+# ---------- 6. sitemap.xml ----------
+BASE='https://www.fs-kokkok.com/'
+urls=['','about/','contact/','works/']+[f"works/{w['slug']}/" for w in works]
+sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{BASE}{u}</loc></url>\n' for u in urls)+'</urlset>\n'
+open(f'{OUT}/sitemap.xml','w',encoding='utf-8').write(sm)
 print(f'build ok: {len(works)} works ->',OUT)
 for w in works: print(f"  {w['slug']}: {len(w['photos'])}枚")

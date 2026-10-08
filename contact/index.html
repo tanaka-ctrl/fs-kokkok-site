@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>お問い合わせ｜株式会社KOKKOK</title>
-<meta name="description" content="株式会社KOKKOKへのお問い合わせ。店舗・オフィス什器、オーダー家具のご相談はメールでお気軽にどうぞ。">
-
+<meta name="description" content="株式会社KOKKOKへのお問い合わせ。店舗・オフィス什器、オーダー家具、試作・OEMのご相談はメールでお気軽にどうぞ。">
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -15,9 +14,9 @@
   <a class="logo" href="../" aria-label="株式会社KOKKOK"><span class="wordmark">KOKKOK</span></a>
   <nav class="site-nav">
     <a href="../">HOME</a>
-    <a href="../works/">事例</a>
-    <a href="../about/">会社概要</a>
-    <a href="./" aria-current="page">お問い合わせ</a>
+    <a href="../works/">WORKS</a>
+    <a href="../about/">ABOUT</a>
+    <a href="./" aria-current="page">CONTACT</a>
   </nav>
 </header>
 
@@ -26,26 +25,83 @@
     <div class="wrap">
       <p class="eyebrow">CONTACT</p>
       <h1>お問い合わせ</h1>
-      <p class="lead">什器・家具のご相談は、メールにて承ります。下のボタンを押すと、お使いのメールソフトが開き、宛先と質問項目が自動で入ります。必要な項目を埋めて送信してください。</p>
+      <p class="lead">下の項目にご記入のうえ「メールソフトで送る」を押すと、お使いのメールソフトが開き、内容が本文に入った状態になります。そのまま送信してください。図面や参考写真があれば、メールに添付してください。</p>
 
-      <div class="actions">
-        <button class="btn btn-primary" id="mailBtn" type="button">メールソフトで問い合わせる</button>
-        <button class="btn btn-ghost" id="copyBtn" type="button">テンプレをコピー</button>
-      </div>
+      <form class="cform" id="cform" novalidate>
+        <div class="field">
+          <label for="f-type">ご相談内容 <span class="req">必須</span></label>
+          <select id="f-type" name="type" required>
+            <option value="">選択してください</option>
+            <option value="新規出店">新規出店（店舗・オフィスの什器一式）</option>
+            <option value="改装">改装・リニューアル</option>
+            <option value="家具単品">家具単品（テーブル・収納など）</option>
+            <option value="試作・開発">試作・開発</option>
+            <option value="OEM・量産">OEM・小ロット生産</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
 
-      <p class="contact-info">宛先：<a href="mailto:info@fs-kokkok.com">info@fs-kokkok.com</a>　／　電話：<a href="tel:0455770988">045-577-0988</a></p>
+        <div class="grid2">
+          <div class="field"><label for="f-company">会社名</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="f-name">お名前 <span class="req">必須</span></label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
+          <div class="field"><label for="f-tel">電話番号 <span class="req">必須</span></label><input id="f-tel" name="tel" type="tel" required autocomplete="tel" placeholder="納品・配送の連絡に使います"></div>
+          <div class="field"><label for="f-mail">メールアドレス</label><input id="f-mail" name="mail" type="email" autocomplete="email" placeholder="送信元と同じなら空欄で可"></div>
+        </div>
 
-      <h2>メールに入る内容</h2>
-      <pre class="template" id="template">会社名：
-お名前：
-ご相談内容（新規出店・改装・家具単品 など）：
-場所（設置先の住所・エリア）：
-ご予算：
-ご希望納期：
+        <div class="field"><label for="f-site">現場住所（設置・施工先）</label><input id="f-site" name="site" type="text" placeholder="例：横浜市中区○○ 1-2-3 ○○ビル2F"></div>
+        <div class="field">
+          <label for="f-ship">送付先住所（納品先）</label>
+          <input id="f-ship" name="ship" type="text">
+          <label class="check"><input id="f-sameaddr" type="checkbox"> 現場住所と同じ</label>
+        </div>
 
-ご相談の詳細（図面や参考写真があれば添付してください）：
-</pre>
-      <p class="note">ボタンでメールソフトが開かない場合は、上の内容をコピーして info@fs-kokkok.com 宛にお送りください。</p>
+        <!-- 相談内容ごとに出る追加の質問 -->
+        <fieldset class="extra" data-for="新規出店 改装">
+          <legend>店舗・オフィスについて</legend>
+          <div class="grid2">
+            <div class="field"><label for="f-kind">物件の種類</label><input id="f-kind" name="kind" type="text" placeholder="例：カフェ／物販／オフィス"></div>
+            <div class="field"><label for="f-open">オープン・引渡し予定日</label><input id="f-open" name="open" type="text" placeholder="例：2026年12月上旬"></div>
+            <div class="field"><label for="f-designer">設計者・施工会社</label><input id="f-designer" name="designer" type="text" placeholder="決まっていれば（未定でも可）"></div>
+            <div class="field"><label for="f-drawing">図面の有無</label><select id="f-drawing" name="drawing"><option value="">選択</option><option>あり（添付します）</option><option>作成中</option><option>なし（相談したい）</option></select></div>
+          </div>
+          <div class="field"><label for="f-items">製作したい什器</label><textarea id="f-items" name="items" rows="3" placeholder="例：レジカウンター、商品棚×4、ベンチ"></textarea></div>
+        </fieldset>
+
+        <fieldset class="extra" data-for="家具単品">
+          <legend>家具について</legend>
+          <div class="grid2">
+            <div class="field"><label for="f-item">品目</label><input id="f-item" name="item" type="text" placeholder="例：ダイニングテーブル"></div>
+            <div class="field"><label for="f-size">サイズ（おおよそ）</label><input id="f-size" name="size" type="text" placeholder="例：W1800×D850×H720"></div>
+            <div class="field"><label for="f-qty">数量</label><input id="f-qty" name="qty" type="text" placeholder="例：1台"></div>
+            <div class="field"><label for="f-use">使う場所</label><select id="f-use" name="use"><option value="">選択</option><option>店舗・オフィス</option><option>住宅</option><option>その他</option></select></div>
+          </div>
+          <div class="field"><label for="f-ref">参考にしたいもの</label><textarea id="f-ref" name="ref" rows="2" placeholder="樹種・色・参考画像のURLなど"></textarea></div>
+        </fieldset>
+
+        <fieldset class="extra" data-for="試作・開発 OEM・量産">
+          <legend>製品について</legend>
+          <div class="field"><label for="f-product">製品の概要</label><textarea id="f-product" name="product" rows="3" placeholder="どんな製品か、用途、素材の希望など"></textarea></div>
+          <div class="grid2">
+            <div class="field"><label for="f-lot">数量（試作数／ロット数）</label><input id="f-lot" name="lot" type="text" placeholder="例：試作3個、量産は月50個"></div>
+            <div class="field"><label for="f-data">データの有無</label><select id="f-data" name="data"><option value="">選択</option><option>3Dデータあり</option><option>図面あり</option><option>スケッチ・写真のみ</option><option>なし（相談したい）</option></select></div>
+            <div class="field"><label for="f-massprod">量産の予定</label><select id="f-massprod" name="massprod"><option value="">選択</option><option>あり</option><option>検討中</option><option>なし（試作のみ）</option></select></div>
+          </div>
+        </fieldset>
+
+        <div class="grid2">
+          <div class="field"><label for="f-budget">ご予算</label><input id="f-budget" name="budget" type="text" placeholder="例：100万円前後／未定"></div>
+          <div class="field"><label for="f-due">ご希望納期</label><input id="f-due" name="due" type="text" placeholder="例：2026年12月末まで"></div>
+        </div>
+
+        <div class="field"><label for="f-detail">ご相談の詳細・ご質問</label><textarea id="f-detail" name="detail" rows="5"></textarea></div>
+
+        <p class="note" id="formMsg" hidden></p>
+        <div class="actions">
+          <button class="btn btn-primary" id="mailBtn" type="button">メールソフトで送る</button>
+          <button class="btn btn-ghost" id="copyBtn" type="button">内容をコピー</button>
+        </div>
+        <p class="note">メールソフトが開かない場合は「内容をコピー」を押し、<a href="mailto:info@fs-kokkok.com">info@fs-kokkok.com</a> 宛に貼り付けて送ってください。</p>
+      </form>
     </div>
   </section>
 </main>
@@ -58,27 +114,7 @@
 </footer>
 
 <div class="toast" id="toast">コピーしました</div>
-
-<script>
-  var MAIL = 'info@fs-kokkok.com';
-  var SUBJECT = '【お問い合わせ】什器・家具のご相談';
-  var TEMPLATE = document.getElementById('template').textContent;
-
-  document.getElementById('mailBtn').addEventListener('click', function () {
-    window.location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(TEMPLATE);
-  });
-
-  document.getElementById('copyBtn').addEventListener('click', function () {
-    var text = '宛先: ' + MAIL + '\n件名: ' + SUBJECT + '\n\n' + TEMPLATE;
-    function done(){ var t=document.getElementById('toast'); t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},1800); }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done);
-    } else {
-      var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select();
-      try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta); done();
-    }
-  });
-</script>
+<script src="../js/contact.js"></script>
 
 </body>
 </html>

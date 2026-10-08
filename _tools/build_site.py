@@ -55,9 +55,9 @@ def header(rel,current):
   <a class="logo" href="{rel}" aria-label="株式会社KOKKOK"><span class="wordmark">KOKKOK</span></a>
   <nav class="site-nav">
     {a(rel,'HOME','home')}
-    {a(rel+'works/','事例','works')}
-    {a(rel+'about/','会社概要','about')}
-    {a(rel+'contact/','お問い合わせ','contact')}
+    {a(rel+'works/','WORKS','works')}
+    {a(rel+'about/','ABOUT','about')}
+    {a(rel+'contact/','CONTACT','contact')}
   </nav>
 </header>'''
 FOOTER='''<footer class="site-footer">

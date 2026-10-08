@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ｜株式会社KOKKOK</title>
+<meta name="description" content="株式会社KOKKOKへのお問い合わせ。店舗・オフィス什器、オーダー家具のご相談はメールでお気軽にどうぞ。">
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="../" aria-label="株式会社KOKKOK"><span class="wordmark">KOKKOK</span></a>
+  <nav class="site-nav">
+    <a href="../">HOME</a>
+    <a href="../about/">会社概要</a>
+    <a href="./" aria-current="page">お問い合わせ</a>
+  </nav>
+</header>
+
+<main>
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">CONTACT</p>
+      <h1>お問い合わせ</h1>
+      <p class="lead">什器・家具のご相談は、メールにて承ります。下のボタンを押すと、お使いのメールソフトが開き、宛先と質問項目が自動で入ります。必要な項目を埋めて送信してください。</p>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="mailBtn" type="button">メールソフトで問い合わせる</button>
+        <button class="btn btn-ghost" id="copyBtn" type="button">テンプレをコピー</button>
+      </div>
+
+      <p class="contact-info">宛先：<a href="mailto:info@fs-kokkok.com">info@fs-kokkok.com</a>　／　電話：<a href="tel:0455770988">045-577-0988</a></p>
+
+      <h2>メールに入る内容</h2>
+      <pre class="template" id="template">会社名：
+お名前：
+ご相談内容（新規出店・改装・家具単品 など）：
+場所（設置先の住所・エリア）：
+ご予算：
+ご希望納期：
+
+ご相談の詳細（図面や参考写真があれば添付してください）：
+</pre>
+      <p class="note">ボタンでメールソフトが開かない場合は、上の内容をコピーして info@fs-kokkok.com 宛にお送りください。</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <div>© 株式会社KOKKOK ｜ 神奈川県横浜市港北区新吉田町203</div>
+    <div>CNC加工の受託は <a href="https://fabnode.jp" target="_blank" rel="noopener">FABNODE</a></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">コピーしました</div>
+
+<script>
+  var MAIL = 'info@fs-kokkok.com';
+  var SUBJECT = '【お問い合わせ】什器・家具のご相談';
+  var TEMPLATE = document.getElementById('template').textContent;
+
+  document.getElementById('mailBtn').addEventListener('click', function () {
+    window.location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(TEMPLATE);
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', function () {
+    var text = '宛先: ' + MAIL + '\n件名: ' + SUBJECT + '\n\n' + TEMPLATE;
+    function done(){ var t=document.getElementById('toast'); t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select();
+      try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta); done();
+    }
+  });
+</script>
+
+</body>
+</html>
